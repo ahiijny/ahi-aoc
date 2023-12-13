@@ -1,14 +1,24 @@
 import itertools
+import sys
 
 springs = []
 picross = []
 
+expand = True
+
+if len(sys.argv) > 1:
+	print("no expansion")
+	expand = False
+
 while True:
 	try:
 		p = input().split()
-		nus = '?'.join([p[0]] * 5)
+		if expand:
+			nus = '?'.join([p[0]] * 5)
+		else:
+			nus = p[0]
 		springs.append(['.'] + list(nus) + ['.']) # add extra
-		picross.append([int(d) for d in p[1].split(",")] * 5)
+		picross.append([int(d) for d in p[1].split(",")] * (5 if expand else 1))
 	except EOFError:
 		break
 		
@@ -109,11 +119,18 @@ for s, p in zip(springs, picross):
 	if False:
 		for pi in dp:
 			for si in pi:
-				print('{0:<2}'.format(si), end='')
+				print('{0:<5}'.format(si), end='')
 			print()
+			
+	# only last placements with only blanks after are valid
+	si = len(s) - 1
+	arrs = 0
+	while s[si] != '#' and si >= 0:
+		arrs += dp[-1][si]
+		si -= 1
 	
-	print(f"\tnum arangements = {sum(dp[-1])}")
-	arrangements.append(sum(dp[-1]))
+	print(f"\tnum arangements = {arrs}")
+	arrangements.append(arrs)
 	
 print(f"sum = {sum(arrangements)}")
 
