@@ -79,9 +79,3 @@ for x in range(len(grid[0])):
 	ons.append(beam((x, len(grid)-1), (0,-1)))
 	
 print(max(ons))
-			
-
-	
-		
-	
-	
