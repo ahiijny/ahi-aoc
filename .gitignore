@@ -1,1 +1,4 @@
 __pycache__
+*.in
+rky_*.py
+reddit20.py
