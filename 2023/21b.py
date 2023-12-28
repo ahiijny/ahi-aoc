@@ -36,7 +36,7 @@ def in_bounds(p):
 
 # bfs
 
-steps = 64
+steps = 55
 
 locs = set()
 locs.add(start)
@@ -59,3 +59,5 @@ for y in range(len(grid)):
 	print()
 
 print(f"num visited: {len(locs)}")
+
+# calc min dists
