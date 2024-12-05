@@ -203,6 +203,7 @@ def calc_reachable(n):
 	# diamond steady state
 	
 	# note this code doesnt work correctly, see 21d.py for correct version
+
 	
 	"""
 	
